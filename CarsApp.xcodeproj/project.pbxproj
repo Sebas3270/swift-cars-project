@@ -7,18 +7,42 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B771DDAF2AFEC757006D7F9E /* CarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B771DDAE2AFEC757006D7F9E /* CarsView.swift */; };
+		B771DDB22AFEC8B6006D7F9E /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = B771DDB12AFEC8B6006D7F9E /* Car.swift */; };
+		B771DDB52AFED428006D7F9E /* CarsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B771DDB42AFED428006D7F9E /* CarsManager.swift */; };
+		B79D67622B09616700AB8ABB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79D67612B09616700AB8ABB /* User.swift */; };
+		B79D67662B0965A900AB8ABB /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79D67652B0965A900AB8ABB /* ProfileView.swift */; };
+		B79D67682B09665000AB8ABB /* PurchasedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79D67672B09665000AB8ABB /* PurchasedView.swift */; };
+		B7A18E4E2B091D800034125B /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A18E4D2B091D800034125B /* RegisterView.swift */; };
+		B7A18E502B093C5F0034125B /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A18E4F2B093C5F0034125B /* UserManager.swift */; };
+		B7A18E522B093E070034125B /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A18E512B093E070034125B /* TokenManager.swift */; };
+		B7F43D002B06CDA000D8873B /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F43CFF2B06CDA000D8873B /* Error.swift */; };
+		B7F43D022B06D4E800D8873B /* CarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F43D012B06D4E800D8873B /* CarView.swift */; };
 		B7FC4AC72AFDCDD500291028 /* CarsAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FC4AC62AFDCDD500291028 /* CarsAppApp.swift */; };
 		B7FC4AC92AFDCDD500291028 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FC4AC82AFDCDD500291028 /* ContentView.swift */; };
 		B7FC4ACB2AFDCDD600291028 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7FC4ACA2AFDCDD600291028 /* Assets.xcassets */; };
 		B7FC4ACE2AFDCDD600291028 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7FC4ACD2AFDCDD600291028 /* Preview Assets.xcassets */; };
+		B7FC4AD62AFDCE6000291028 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FC4AD52AFDCE6000291028 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B771DDAE2AFEC757006D7F9E /* CarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsView.swift; sourceTree = "<group>"; };
+		B771DDB12AFEC8B6006D7F9E /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
+		B771DDB42AFED428006D7F9E /* CarsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsManager.swift; sourceTree = "<group>"; };
+		B79D67612B09616700AB8ABB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B79D67652B0965A900AB8ABB /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		B79D67672B09665000AB8ABB /* PurchasedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasedView.swift; sourceTree = "<group>"; };
+		B7A18E4D2B091D800034125B /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		B7A18E4F2B093C5F0034125B /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		B7A18E512B093E070034125B /* TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
+		B7F43CFF2B06CDA000D8873B /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		B7F43D012B06D4E800D8873B /* CarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarView.swift; sourceTree = "<group>"; };
 		B7FC4AC32AFDCDD500291028 /* CarsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7FC4AC62AFDCDD500291028 /* CarsAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsAppApp.swift; sourceTree = "<group>"; };
 		B7FC4AC82AFDCDD500291028 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B7FC4ACA2AFDCDD600291028 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7FC4ACD2AFDCDD600291028 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B7FC4AD52AFDCE6000291028 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +56,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B771DDB02AFEC8A9006D7F9E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B771DDB12AFEC8B6006D7F9E /* Car.swift */,
+				B7F43CFF2B06CDA000D8873B /* Error.swift */,
+				B79D67612B09616700AB8ABB /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B771DDB32AFED3E8006D7F9E /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				B771DDB42AFED428006D7F9E /* CarsManager.swift */,
+				B7A18E4F2B093C5F0034125B /* UserManager.swift */,
+				B7A18E512B093E070034125B /* TokenManager.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		B7FC4ABA2AFDCDD500291028 = {
 			isa = PBXGroup;
 			children = (
@@ -51,6 +95,9 @@
 		B7FC4AC52AFDCDD500291028 /* CarsApp */ = {
 			isa = PBXGroup;
 			children = (
+				B771DDB32AFED3E8006D7F9E /* Data */,
+				B771DDB02AFEC8A9006D7F9E /* Models */,
+				B7FC4AD42AFDCE0600291028 /* Screens */,
 				B7FC4AC62AFDCDD500291028 /* CarsAppApp.swift */,
 				B7FC4AC82AFDCDD500291028 /* ContentView.swift */,
 				B7FC4ACA2AFDCDD600291028 /* Assets.xcassets */,
@@ -65,6 +112,19 @@
 				B7FC4ACD2AFDCDD600291028 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B7FC4AD42AFDCE0600291028 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				B7FC4AD52AFDCE6000291028 /* LoginView.swift */,
+				B771DDAE2AFEC757006D7F9E /* CarsView.swift */,
+				B7F43D012B06D4E800D8873B /* CarView.swift */,
+				B7A18E4D2B091D800034125B /* RegisterView.swift */,
+				B79D67652B0965A900AB8ABB /* ProfileView.swift */,
+				B79D67672B09665000AB8ABB /* PurchasedView.swift */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +197,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7A18E4E2B091D800034125B /* RegisterView.swift in Sources */,
+				B79D67662B0965A900AB8ABB /* ProfileView.swift in Sources */,
+				B7FC4AD62AFDCE6000291028 /* LoginView.swift in Sources */,
+				B7F43D022B06D4E800D8873B /* CarView.swift in Sources */,
+				B7A18E522B093E070034125B /* TokenManager.swift in Sources */,
+				B771DDAF2AFEC757006D7F9E /* CarsView.swift in Sources */,
+				B771DDB22AFEC8B6006D7F9E /* Car.swift in Sources */,
 				B7FC4AC92AFDCDD500291028 /* ContentView.swift in Sources */,
+				B79D67682B09665000AB8ABB /* PurchasedView.swift in Sources */,
+				B771DDB52AFED428006D7F9E /* CarsManager.swift in Sources */,
+				B79D67622B09616700AB8ABB /* User.swift in Sources */,
+				B7F43D002B06CDA000D8873B /* Error.swift in Sources */,
+				B7A18E502B093C5F0034125B /* UserManager.swift in Sources */,
 				B7FC4AC72AFDCDD500291028 /* CarsAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
