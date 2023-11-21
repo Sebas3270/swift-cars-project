@@ -6,18 +6,23 @@
 //
 
 import Foundation
+import SwiftUI
 
-class UserManager {
+class UserManager: ObservableObject {
     
     static let shared = UserManager()
     
-    var isLogged: Bool = false
-    var user: User? = nil
+    @Published var isLogged: Bool = false
+    @Published var user: User? = nil
     private let tokenManager = TokenManager.shared
     
     init() {
         if tokenManager.authToken != nil {
-            isLogged = true
+            logIn(email: tokenManager.email!, password: tokenManager.password!){ result in
+                DispatchQueue.main.async {
+                    self.isLogged = result
+                }
+            }
         }
     }
     
@@ -47,8 +52,51 @@ class UserManager {
             
             do {
                 let logInResponse : LogInResponse = try JSONDecoder().decode(LogInResponse.self, from: data)
-                self.user = logInResponse.result
-                self.tokenManager.saveTokenFromAPI(token: self.user!.token)
+                DispatchQueue.main.async {
+                    self.user = logInResponse.result
+                    self.tokenManager.saveData(
+                        token: self.user!.token,
+                        email: self.user!.correo,
+                        password: self.user!.contra
+                    )
+                    self.isLogged = true
+                    completion(true)
+                }
+            } catch {
+                completion(false)
+            }
+        }
+        
+        task.resume()
+        
+    }
+    
+    func register(name: String, lastName: String, phone: String,email: String, password: String, completion: @escaping (Bool) -> Void){
+        var request = URLRequest(url: URL(string: "https://api.vehiculos.alphadev.io/v1/comprador/signup")!)
+        let requestBody = try? JSONSerialization.data(withJSONObject: ["correo": email, "contra":password, "telefono": phone, "nombre": name, "apellidos": lastName])
+        request.httpMethod = "POST"
+        request.httpBody = requestBody
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if error != nil {
+                completion(false)
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+                completion(false)
+                return
+            }
+            
+            
+            guard let data = data else {
+                completion(false)
+                return
+            }
+            
+            do {
+                let _ = try JSONDecoder().decode(RegisterResponse.self, from: data)
                 completion(true)
             } catch {
                 completion(false)
@@ -64,7 +112,7 @@ class UserManager {
         
         var request = URLRequest(url: URL(string: "https://api.vehiculos.alphadev.io/v1/compra")!,timeoutInterval: Double.infinity)
         request.httpMethod = "GET"
-        request.addValue(self.tokenManager.authToken!, forHTTPHeaderField: "Authorization")
+        request.addValue(self.tokenManager.authToken ?? "", forHTTPHeaderField: "Authorization")
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             
@@ -84,8 +132,6 @@ class UserManager {
                 return
             }
             
-            print(String(data: data, encoding: .utf8)!)
-            
             do {
                 var carResponse : PurchasedCarResponse = try JSONDecoder().decode(PurchasedCarResponse.self, from: data)
                 carResponse.result = carResponse.result.filter { $0.serie != nil }
@@ -98,6 +144,11 @@ class UserManager {
         task.resume()
         
         
+    }
+    
+    func logOut(){
+        tokenManager.removeToken()
+        isLogged = false
     }
     
     

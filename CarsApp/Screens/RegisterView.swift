@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct RegisterView: View {
+    
+    @ObservedObject var userManager: UserManager
+    @Environment(\.presentationMode) var presentationMode
+    
     @State private var name = ""
     @State private var lastName = ""
     @State private var phone = ""
@@ -59,7 +63,7 @@ struct RegisterView: View {
                         .background(Color.black.opacity(0.08))
                         .cornerRadius(10)
                     Button("Register"){
-                        
+                        register()
                     }
                     .foregroundColor(Color.white)
                     .frame(width: 300, height: 40)
@@ -76,10 +80,22 @@ struct RegisterView: View {
             }
         }.navigationBarHidden(false)
     }
+    
+    func register() {
+        
+        userManager.register(name: name, lastName: lastName, phone: phone, email: email, password: password){ result in
+            DispatchQueue.main.async {
+                if(result == true){
+                    @Environment(\.presentationMode) var presentationMode
+                }
+            }
+        }
+    }
 }
 
-struct RegisterView_Previews: PreviewProvider {
+/*struct RegisterView_Previews: PreviewProvider {
     static var previews: some View {
         RegisterView()
     }
 }
+*/

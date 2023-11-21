@@ -9,6 +9,9 @@ import SwiftUI
 
 struct LoginView: View {
     
+    @ObservedObject var userManager: UserManager
+    @Environment(\.presentationMode) var presentationMode
+    
     @State private var username = ""
     @State private var password = ""
     
@@ -42,16 +45,12 @@ struct LoginView: View {
                         .background(Color.black.opacity(0.08))
                         .cornerRadius(15)
                     Button("Log In"){
-                        
+                        logIn()
                     }
                     .foregroundColor(Color.white)
                     .frame(width: 300, height: 40)
                     .background(Color.red.opacity(0.8))
                     .cornerRadius(10)
-                    .onTapGesture {
-                        print("Pressed!")
-                        logIn()
-                    }
                     Button("Don't have an account?"){
                         
                     }
@@ -66,12 +65,11 @@ struct LoginView: View {
     
     func logIn() {
         
-        let userManager = UserManager.shared
-        
         userManager.logIn(email: username, password: password){ result in
             DispatchQueue.main.async {
                 if(result == true){
                     print("Log successfull")
+                    @Environment(\.presentationMode) var presentationMode
                 }else{
                     print("Log failed")
                 }
@@ -80,8 +78,9 @@ struct LoginView: View {
     }
 }
 
-struct LoginView_Previews: PreviewProvider {
+/*struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()
     }
 }
+*/

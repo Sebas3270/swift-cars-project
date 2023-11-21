@@ -28,3 +28,17 @@ struct User: Codable {
         case token
     }
 }
+
+
+// MARK: - RegisterResponse
+struct RegisterResponse: Codable {
+    let message: String
+    let data: UserRegister
+}
+
+// MARK: - DataClass
+struct UserRegister: Codable {
+    let id: Int
+    let nombre, apellidos, telefono, correo: String
+    let contra: String
+}

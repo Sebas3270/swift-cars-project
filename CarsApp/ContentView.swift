@@ -9,26 +9,32 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @StateObject private var userManager = UserManager()
+    
     var body: some View {
-        NavigationView{
-            TabView{
-                CarsView()
-                    .tabItem(){
-                        Image(systemName: "car.fill")
-                        Text("Cars")
-                    }
-                PurchasedView()
-                    .tabItem(){
-                        Image(systemName: "bag.fill")
-                        Text("Purchased cars")
-                    }
-                ProfileView()
-                    .tabItem(){
-                        Image(systemName: "person.fill")
-                        Text("Profile")
-                    }
-            }
+        TabView{
+            CarsView()
+                .tabItem(){
+                    Image(systemName: "car.fill")
+                    Text("Cars")
+                }
+            PurchasedView(
+                userManager: userManager
+            )
+                .tabItem(){
+                    Image(systemName: "bag.fill")
+                    Text("Purchased cars")
+                }
+            ProfileView(
+                userManager: userManager
+            )
+                .tabItem(){
+                    Image(systemName: "person.fill")
+                    Text("Profile")
+                }
         }
+        .navigationBarHidden(true)
+        
     }
 }
 
