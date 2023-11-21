@@ -30,8 +30,7 @@ struct PurchasedView: View {
                             // Handle failure
                             Text("Error: \(error.localizedDescription)")
                         case .some(.success(let cars)):
-                            //Text("Hi")
-                            List(cars) { car in
+                            List(userManager.purchasedCars) { car in
                                 
                                 HStack {
                                     AsyncImage(url: URL(string: car.imagen!)){ image in
@@ -67,9 +66,7 @@ struct PurchasedView: View {
     }
     
     func loadData() {
-        
-        let userManager = UserManager.shared
-        
+
         userManager.getPurchasedCars(){ result in
             DispatchQueue.main.async {
                 self.dataResult = result

@@ -13,7 +13,9 @@ struct ContentView: View {
     
     var body: some View {
         TabView{
-            CarsView()
+            CarsView(
+                userManager: userManager
+            )
                 .tabItem(){
                     Image(systemName: "car.fill")
                     Text("Cars")

@@ -10,6 +10,7 @@ import SwiftUI
 struct CarView: View {
     
     var car: Car
+    @ObservedObject var userManager: UserManager
     @State var performLogIn = false
     @State private var showAlert = false
     
@@ -29,15 +30,12 @@ struct CarView: View {
                 
                 Spacer()
                 Button("Buy"){
-                    
+                    buyCar()
                 }
                 .foregroundColor(Color.white)
                 .frame(width: 350, height: 40)
                 .background(Color.red.opacity(0.8))
                 .cornerRadius(10)
-                .onTapGesture {
-                    buyCar()
-                }
                 Spacer()
                 
             }
@@ -68,19 +66,26 @@ struct CarView: View {
     }
     
     func buyCar(){
-        let userManager = UserManager.shared
-        
         if !userManager.isLogged {
             //print("Entered")
             self.showAlert.toggle()
             
+        }else{
+            userManager.purchaseCar(carId: car.id){ result in
+                DispatchQueue.main.async {
+                    if result {
+                        userManager.getPurchasedCars(){ result2 in }
+                    }
+                }
+            }
         }
     }
 }
 
-struct CarView_Previews: PreviewProvider {
+/*struct CarView_Previews: PreviewProvider {
     static var previews: some View {
         CarView(car: Car(id: 100, serie: "prueba", color: "azul", cilindros: 5, idMarca: 9, submarca: "Chevrolet Aveo", modelo: 2022, puertas: 4, precio: 50000.45, idSegmento: 2, imagen: "https://i.ytimg.com/vi/r8Zyg5x-5Vo/maxresdefault.jpg", estatus: 0, fechaVenta: nil, fechaCreacion: nil, fechaModificacion: nil))
     }
 }
 
+*/

@@ -70,3 +70,20 @@ struct PurchasedCar: Codable, Identifiable {
         case compradorID = "comprador_id"
     }
 }
+
+
+struct PurchaseResponse: Codable {
+    let message: String
+    let data: PurchaseData
+}
+
+// MARK: - DataClass
+struct PurchaseData: Codable {
+    let id, compradorID, autoID: Int
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case compradorID = "comprador_id"
+        case autoID = "auto_id"
+    }
+}

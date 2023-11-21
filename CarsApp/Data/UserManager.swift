@@ -14,6 +14,7 @@ class UserManager: ObservableObject {
     
     @Published var isLogged: Bool = false
     @Published var user: User? = nil
+    @Published var purchasedCars: [PurchasedCar] = []
     private let tokenManager = TokenManager.shared
     
     init() {
@@ -134,8 +135,12 @@ class UserManager: ObservableObject {
             
             do {
                 var carResponse : PurchasedCarResponse = try JSONDecoder().decode(PurchasedCarResponse.self, from: data)
-                carResponse.result = carResponse.result.filter { $0.serie != nil }
-                completion(.success(carResponse.result))
+                DispatchQueue.main.async {
+                    
+                    carResponse.result = carResponse.result.filter { $0.serie != nil }
+                    self.purchasedCars = carResponse.result
+                    completion(.success(carResponse.result))
+                }
             } catch {
                 completion(.failure(.invalidData))
             }
@@ -143,6 +148,45 @@ class UserManager: ObservableObject {
         
         task.resume()
         
+        
+    }
+    
+    func purchaseCar(carId: Int, completion: @escaping (Bool) -> Void){
+        var request = URLRequest(url: URL(string: "https://api.vehiculos.alphadev.io/v1/compra")!)
+        let requestBody = try? JSONSerialization.data(withJSONObject: ["auto_id": String(carId)])
+        request.addValue(self.tokenManager.authToken ?? "", forHTTPHeaderField: "Authorization")
+        request.httpMethod = "POST"
+        request.httpBody = requestBody
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if error != nil {
+                completion(false)
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+                completion(false)
+                return
+            }
+            
+            
+            guard let data = data else {
+                completion(false)
+                return
+            }
+            
+            /*do {
+                let _ = try JSONDecoder().decode(PurchaseResponse.self, from: data)
+                completion(true)
+            } catch {
+                completion(false)
+            }*/
+            
+            completion(true)
+        }
+        
+        task.resume()
         
     }
     

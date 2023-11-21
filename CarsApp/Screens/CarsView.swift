@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CarsView: View {
     
+    @ObservedObject var userManager: UserManager
     @State private var dataResult: Result<[Car], NetworkError>? = nil
     
     var body: some View {
@@ -23,7 +24,7 @@ struct CarsView: View {
                     Text("Error: \(error.localizedDescription)")
                 case .some(.success(let cars)):
                     List(cars) { car in
-                        NavigationLink(destination: CarView(car: car)){
+                        NavigationLink(destination: CarView(car: car, userManager: userManager)){
                             HStack {
                                 AsyncImage(url: URL(string: car.imagen)){ image in
                                     image
@@ -67,8 +68,9 @@ struct CarsView: View {
     }
 }
 
-struct CarsView_Previews: PreviewProvider {
+/*struct CarsView_Previews: PreviewProvider {
     static var previews: some View {
         CarsView()
     }
 }
+*/
